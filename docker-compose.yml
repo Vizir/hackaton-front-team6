@@ -1,0 +1,12 @@
+version: '3.6'
+
+services:
+  lib:
+    image: node:10.14.2
+    volumes:
+      - $PWD:/app
+      - ~/.npmrc:/root/.npmrc
+    working_dir: /app
+    command: yarn start
+    expose:
+      - 3000

@@ -1,0 +1,110 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "@react-native-community",
+    "plugin:import/errors",
+    "plugin:import/typescript",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "unicorn"
+  ],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["~", "./lib"],
+          ["#", "./test"]
+        ],
+        "extensions": [".ts", ".tsx", ".json"]
+      }
+    }
+  },
+  "rules": {
+    // Bug avoiding
+    "import/no-cycle": "error",
+    "eslint-comments/no-unused-disable": "error",
+    "@typescript-eslint/explicit-function-return-type": "error",
+    "no-template-curly-in-string": ["error"],
+    "nonblock-statement-body-position": ["error"],
+
+    // Code style
+    "unicorn/filename-case": [
+      "error",
+      {
+        "case": "kebabCase"
+      }
+    ],
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "block-like"
+      },
+      {
+        "blankLine": "always",
+        "prev": "block-like",
+        "next": "*"
+      }
+    ],
+    "no-else-return": ["error"],
+    "no-var": ["error"],
+    "no-multi-spaces": ["error"],
+    "no-sequences": ["error"],
+    "no-useless-call": ["error"],
+    "no-useless-concat": ["error"],
+    "no-useless-return": ["error"],
+    "no-void": ["error"],
+    "no-multi-assign": ["error"],
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "no-negated-condition": ["error"],
+    "array-bracket-newline": ["error", "consistent"],
+    "eol-last": ["error", "always"],
+    "keyword-spacing": ["error"],
+    "no-nested-ternary": ["error"],
+    "no-tabs": ["error"],
+    "no-trailing-spaces": ["error"],
+    "no-unneeded-ternary": ["error"],
+    "no-whitespace-before-property": ["error"],
+    "object-curly-newline": ["error", {
+      "consistent": true
+    }],
+    "no-confusing-arrow": ["error"],
+    "padded-blocks": ["error", "never"],
+    "no-useless-computed-key": ["error"],
+    "template-curly-spacing": ["error"],
+    "@typescript-eslint/member-ordering": [
+      "error",
+      {
+        "default": [
+          "private-field",
+          "protected-field",
+          "public-field",
+          "constructor",
+          "private-method",
+          "protected-method",
+          "public-method"
+        ]
+      }
+    ],
+    "dot-location": ["error", "property"],
+
+    // Import
+    "import/no-duplicates": ["error"],
+    "import/no-namespace": ["error"],
+    "no-restricted-imports": ["error", {
+      "patterns": ["../*", "**/app_colors", "**/app_sizes", "**/app_fonts", "**/colors.json"]
+    }],
+    "import/order": ["error", {
+      "newlines-between": "always",
+      "groups": ["builtin", "external", "internal", "unknown"],
+      "pathGroups": [
+        { "pattern": "~/**", "group": "internal" },
+        { "pattern": "./**", "group": "unknown" }
+      ]
+    }]
+  }
+}

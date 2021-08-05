@@ -1,0 +1,38 @@
+name: Publish to Azure Artifacts
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Read .nvmrc
+        id: node_version
+        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ steps.node_version.outputs.NODE_VERSION }}
+
+      - name: Configure .npmrc for Azure Artifacts
+        uses: Vizir/action-azure-artifacts-config-npmrc@1.0
+        with:
+          organization: vizir-banking
+          project: vizir-banking
+          feeds: vizir-banking
+          username: vizir-banking
+          token: ${{ secrets.AZURE_PAT }}
+
+      - name: Build
+        run: |
+          yarn install
+          yarn release
+
+      - name: Publish
+        run: npm publish
