@@ -13,6 +13,17 @@ When a new release is proposed:
 
 ### Added
 
+-
+
+### Changed
+
+-
+
+## [1.1.0] - 2021-11-19
+
+### Added
+
+- Created Webview infrastructure.
 - Created workflow to check PR quality
 - Created Copyright license file
 - Added ".nvmrc" to fix Node version, and added new command on "package.json"
@@ -29,7 +40,7 @@ When a new release is proposed:
 
 - Removed dist folder
 
-## [1.0.0] - 2020-08-20
+## [1.0.0] - 2021-08-11
 
 ### Added
 

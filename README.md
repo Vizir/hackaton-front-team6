@@ -1,4 +1,4 @@
-# Banking App Plugin Template
+# Banking App Webview plugin
 
 This repository is a template for banking app plugins. The application is built using react and react-native
 
@@ -23,7 +23,6 @@ fix(input): fixed input mask
 
 ## Folder Structure (general) ##
 
-===
     README.md - You are here!
     \lib
       \api (api requests related code)

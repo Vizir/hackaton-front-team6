@@ -2,7 +2,7 @@ version: '3.6'
 
 services:
   lib:
-    image: node:10.14.2
+    image: node:10.19
     volumes:
       - $PWD:/app
       - ~/.npmrc:/root/.npmrc
