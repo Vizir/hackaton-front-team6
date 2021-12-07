@@ -1,4 +1,4 @@
-import { webviewPluginEntry } from './/home/entry';
+import { financeControlEntry } from './/screens/header/entry';
 export default (entryParams) => {
-    webviewPluginEntry(entryParams.routesManager, entryParams.homeManager);
+    financeControlEntry(entryParams.routesManager, entryParams.homeManager);
 };

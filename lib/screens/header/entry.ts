@@ -1,10 +1,10 @@
 import {HomeManager} from '@vizir-banking/banking-app-core/dist/hooks/home-manager';
 import {RoutesManager} from '@vizir-banking/banking-app-core/dist/hooks/routes-manager';
 
-import {registerScreens} from '~/home/navigation/register-screens';
-import {WebviewPluginConfigs} from '~/home/types';
+import {registerScreens} from '~/screens/header/navigation/register-screens';
+import {SCREENS} from '~/screens/header/navigation/screen-definitions';
 
-export const webviewPluginEntry = (
+export const financeControlEntry = (
   routesManager: typeof RoutesManager,
   homeManager: typeof HomeManager,
 ): void => {
@@ -15,8 +15,7 @@ export const webviewPluginEntry = (
       icon: 'pix',
       iconWidth: 25,
       iconHeight: 25,
-      screenName: 'financeControl',
-      routeParams: {},
+      screenName: SCREENS.dashboard,
     },
   ]);
 

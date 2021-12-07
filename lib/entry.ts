@@ -1,11 +1,7 @@
 import {EntrypointParams} from '@vizir-banking/banking-app-core/dist/utils/entrypoint-params';
 
-import {webviewPluginEntry} from '~/home/entry';
+import {financeControlEntry} from '~/screens/header/entry';
 
 export default (entryParams: EntrypointParams): void => {
-
-    webviewPluginEntry(
-      entryParams.routesManager,
-      entryParams.homeManager,
-    );
+  financeControlEntry(entryParams.routesManager, entryParams.homeManager);
 };

@@ -1,4 +1,4 @@
-# Banking App Webview plugin
+# Banking App Finance Control Plugin
 
 This repository is a template for banking app plugins. The application is built using react and react-native
 

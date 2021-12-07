@@ -19,29 +19,4 @@ When a new release is proposed:
 
 -
 
-## [1.1.0] - 2021-11-19
 
-### Added
-
-- Created Webview infrastructure.
-- Created workflow to check PR quality
-- Created Copyright license file
-- Added ".nvmrc" to fix Node version, and added new command on "package.json"
-
-### Changed
-
-- Corrected ESLint error on local IDEs
-- Corrected "docker-compose.yml" mappings to volume ".npmrc"
-- Compatibilized "tsconfig.json" with "banking-app-core"
-- Bump banking-app-core to 3.4.0
-- Avoided unused files on entrypoint
-
-### Removed
-
-- Removed dist folder
-
-## [1.0.0] - 2021-08-11
-
-### Added
-
-- Initial version
