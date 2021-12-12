@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import {Transitioning, Transition} from 'react-native-reanimated';
+import React from 'react';
 
 import {ChevronLeft, ChevronRight} from '@vizir-banking/design-system';
 
