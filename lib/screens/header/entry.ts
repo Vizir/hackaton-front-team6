@@ -11,7 +11,7 @@ export const financeControlEntry = (
   homeManager.addHomeMenuItem([
     {
       order: 1,
-      label: 'Meu Controle',
+      label: 'Julius',
       icon: 'pix',
       iconWidth: 25,
       iconHeight: 25,

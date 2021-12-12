@@ -5,7 +5,6 @@ import {
   ContentContainerTypes,
 } from '@vizir-banking/banking-app-core/dist/common';
 import {Tabs} from '~/components/tabs/tabs';
-import {ScreensEnum} from '~/screens/header/types';
 
 interface HeaderProps {
   selectedTabIndex: number;
@@ -23,7 +22,7 @@ const BaseHome: React.ComponentType<HeaderProps> = ({
       type={ScreenTypes.LOGGED}
       contentContainerType={ContentContainerTypes.VIEW}
       hasBackgroundImage
-      title={'Controle de Gastos'}
+      title={'Julius'}
       rightIcon={'filter'}
     >
       <Tabs
