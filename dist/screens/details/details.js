@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text } from '@vizir-banking/banking-app-core/dist/layout';
-const Details = () => {
+import { View } from '@vizir-banking/banking-app-core/dist/layout';
+import { MonthSelector } from '../../components/monthSelector/monthSelector';
+const Details = ({ monthHandler, displayMonth, }) => {
     return (React.createElement(View, null,
-        React.createElement(Text, null, "Details")));
+        React.createElement(MonthSelector, { displayMonth: displayMonth, monthHandler: monthHandler })));
 };
 export { Details };
