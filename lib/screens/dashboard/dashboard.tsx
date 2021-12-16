@@ -4,6 +4,7 @@ import {Card} from '~/components/card/card';
 import {Text, View} from '@vizir-banking/banking-app-core/dist/layout';
 import {Upload, Download} from '@vizir-banking/design-system';
 import {StyleSheet} from 'react-native';
+import PieChart from 'react-native-pie-chart';
 
 import {
   InfoContainer,
@@ -19,10 +20,58 @@ interface DashboardProps {
   displayMonth: number;
 }
 
+const widthAndHeight = 250;
+const series = [60, 30, 10];
+const sliceColor = ['#F44336', '#2196F3', '#FFEB3B', '#4CAF50', '#FF9800'];
+
+const apimock: DashboardData = {
+  incomeAmount: '1234.56',
+  expenseAmount: '1234.56',
+  balanceAmount: '1234.56',
+  categories: [
+    {
+      categoryId: '34',
+      categoryName: 'Compras Online',
+      amount: 100.0,
+      percentage: 10,
+    },
+    {
+      categoryId: '34',
+      categoryName: 'Alimentação',
+      amount: 300.0,
+      percentage: 30,
+    },
+    {
+      categoryId: '34',
+      categoryName: 'Lazer',
+      amount: 900.0,
+      percentage: 60,
+    },
+  ],
+};
+
+interface DashboardData {
+  incomeAmount: string;
+  expenseAmount: string;
+  balanceAmount: string;
+  categories: {
+    categoryId: string;
+    categoryName: string;
+    amount: number;
+    percentage: number;
+  }[];
+}
+
 const Dashboard: React.ComponentType<DashboardProps> = ({
   monthHandler,
   displayMonth,
 }) => {
+  const getDataSeries = (data: DashboardData) => {
+    return data.categories.map((item) => {
+      return item.percentage;
+    });
+  };
+
   return (
     <>
       <View>
@@ -50,6 +99,16 @@ const Dashboard: React.ComponentType<DashboardProps> = ({
             </InfoContainer>
           </CardRow>
         </CardContainer>
+      </Card>
+      <Card>
+        <PieChart
+          widthAndHeight={widthAndHeight}
+          series={getDataSeries(apimock)}
+          sliceColor={sliceColor}
+          doughnut={true}
+          coverRadius={0.45}
+          coverFill={'#FFF'}
+        />
       </Card>
     </>
   );
