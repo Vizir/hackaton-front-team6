@@ -22,5 +22,31 @@ export const InfoTitle = styled(Text) `
   font-size: 16px;
 `;
 export const InfoBlock = styled(View) `
+  flex-direction: row;
+  justify-content: space-between;
+`;
+export const Title = styled(Text) `
+  font-size: 17px;
+  margin-bottom: 8px;
+  font-weight: bold;
+`;
+export const GraphContainer = styled(View) `
   justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+`;
+export const LegendCircle = styled.View `
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: ${({ color }) => color};
+  margin-right: 8px;
+`;
+export const Container = styled.ScrollView `
+  flex: 1;
+  height: 100%;
+`;
+export const NamedLegend = styled(View) `
+  flex-direction: row;
+  align-items: center;
 `;

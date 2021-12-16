@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {MonthSelector} from '~/components/monthSelector/monthSelector';
 import {Card} from '~/components/card/card';
 import {Text, View} from '@vizir-banking/banking-app-core/dist/layout';
 import {Upload, Download} from '@vizir-banking/design-system';
 import {StyleSheet} from 'react-native';
 import PieChart from 'react-native-pie-chart';
-
 import {
   InfoContainer,
   ValueText,
@@ -13,6 +12,11 @@ import {
   CardRow,
   InfoTitle,
   InfoBlock,
+  Title,
+  GraphContainer,
+  LegendCircle,
+  Container,
+  NamedLegend,
 } from './dashboard.styles';
 
 interface DashboardProps {
@@ -21,7 +25,6 @@ interface DashboardProps {
 }
 
 const widthAndHeight = 250;
-const series = [60, 30, 10];
 const sliceColor = ['#F44336', '#2196F3', '#FFEB3B', '#4CAF50', '#FF9800'];
 
 const apimock: DashboardData = {
@@ -32,19 +35,19 @@ const apimock: DashboardData = {
     {
       categoryId: '34',
       categoryName: 'Compras Online',
-      amount: 100.0,
+      amount: '100.0',
       percentage: 10,
     },
     {
       categoryId: '34',
       categoryName: 'Alimentação',
-      amount: 300.0,
+      amount: '300.0',
       percentage: 30,
     },
     {
       categoryId: '34',
       categoryName: 'Lazer',
-      amount: 900.0,
+      amount: '900.0',
       percentage: 60,
     },
   ],
@@ -57,7 +60,7 @@ interface DashboardData {
   categories: {
     categoryId: string;
     categoryName: string;
-    amount: number;
+    amount: string;
     percentage: number;
   }[];
 }
@@ -66,6 +69,8 @@ const Dashboard: React.ComponentType<DashboardProps> = ({
   monthHandler,
   displayMonth,
 }) => {
+  const [data, setData] = useState(apimock);
+
   const getDataSeries = (data: DashboardData) => {
     return data.categories.map((item) => {
       return item.percentage;
@@ -80,36 +85,53 @@ const Dashboard: React.ComponentType<DashboardProps> = ({
           monthHandler={monthHandler}
         />
       </View>
-      <Card>
-        <CardContainer>
-          <InfoContainer>
-            <InfoTitle>Balanço Mensal</InfoTitle>
-            <ValueText>R$ 4.000,00</ValueText>
-          </InfoContainer>
-          <CardRow>
-            <Download width={24} color="green" />
+      <Container>
+        <Card>
+          <CardContainer>
             <InfoContainer>
-              <InfoTitle>Receitas</InfoTitle>
-              <ValueText color="#19B93D">R$ 5.000,00</ValueText>
+              <InfoTitle>Balanço Mensal</InfoTitle>
+              <ValueText>R$ 4.000,00</ValueText>
             </InfoContainer>
-            <Upload width={24} color="red" />
-            <InfoContainer>
-              <InfoTitle>Despesas</InfoTitle>
-              <ValueText color="#F80C0C">R$ 1.000,00</ValueText>
-            </InfoContainer>
-          </CardRow>
-        </CardContainer>
-      </Card>
-      <Card>
-        <PieChart
-          widthAndHeight={widthAndHeight}
-          series={getDataSeries(apimock)}
-          sliceColor={sliceColor}
-          doughnut={true}
-          coverRadius={0.45}
-          coverFill={'#FFF'}
-        />
-      </Card>
+            <CardRow>
+              <Download width={24} color="green" />
+              <InfoContainer>
+                <InfoTitle>Receitas</InfoTitle>
+                <ValueText color="#19B93D">R$ 5.000,00</ValueText>
+              </InfoContainer>
+              <Upload width={24} color="red" />
+              <InfoContainer>
+                <InfoTitle>Despesas</InfoTitle>
+                <ValueText color="#F80C0C">R$ 1.000,00</ValueText>
+              </InfoContainer>
+            </CardRow>
+          </CardContainer>
+        </Card>
+        <Card>
+          <GraphContainer>
+            <Title>Despesas por categoria</Title>
+            <PieChart
+              widthAndHeight={widthAndHeight}
+              series={getDataSeries(apimock)}
+              sliceColor={sliceColor}
+              doughnut={true}
+              coverRadius={0.45}
+              coverFill={'#FFF'}
+            />
+          </GraphContainer>
+          {data &&
+            data.categories.map((item, index) => {
+              return (
+                <InfoBlock key={item.categoryId}>
+                  <NamedLegend>
+                    <LegendCircle color={sliceColor[index]} />
+                    <InfoTitle>{item.categoryName}</InfoTitle>
+                  </NamedLegend>
+                  <ValueText>R$ {item.amount}</ValueText>
+                </InfoBlock>
+              );
+            })}
+        </Card>
+      </Container>
     </>
   );
 };
