@@ -6,6 +6,24 @@ interface DetailsProps {
     setLoading: (loading: boolean) => void;
     loading: boolean;
 }
+export interface DetailsData {
+    previousPage: number;
+    currentPage: number;
+    nextPage: number;
+    last: boolean;
+    totalPages: number;
+    totalItems: number;
+    maxItemsPerPage: number;
+    totalItemsPage: number;
+    details: {
+        transactionId: string;
+        categoryId: string;
+        categoryName: string;
+        establishmentName: string;
+        transactionDate: string;
+        amount: string;
+    }[];
+}
 declare type DetailsItemsList = ReturnType<typeof mapStateToProps> & DetailsProps;
 declare type State = {
     accountID?: number[] | undefined;

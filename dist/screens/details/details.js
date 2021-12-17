@@ -97,7 +97,7 @@ const Details = ({ monthHandler, displayMonth, accountID, setLoading, loading, }
             setLoading(false);
         });
     };
-    return (React.createElement(Container, null, modalStatus ? (React.createElement(CategoryPicker, { setModalStatus: setModalStatus, transactionId: transactionToUpdate })) : (React.createElement(React.Fragment, null,
+    return (React.createElement(Container, null, modalStatus ? (React.createElement(CategoryPicker, { setModalStatus: setModalStatus, transactionId: transactionToUpdate, data: data, setData: setData })) : (React.createElement(React.Fragment, null,
         React.createElement(View, null,
             React.createElement(MonthSelector, { displayMonth: displayMonth, monthHandler: monthHandler })),
         loading ? (React.createElement(LoadingScreen, { size: "large", color: "#0000ff" })) : data ? (data.details.map((item) => (React.createElement(DetailsItem, { key: item.transactionId, transactionId: item.transactionId, categoryId: item.categoryId, categoryName: item.categoryName, establishmentName: item.establishmentName, transactionDate: item.transactionDate, amount: item.amount, setModalStatus: setModalStatus, setTransactionToUpdate: setTransactionToUpdate })))) : (React.createElement(Card, null,

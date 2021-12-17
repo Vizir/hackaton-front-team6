@@ -11,6 +11,7 @@ import {Text} from '@vizir-banking/banking-app-core/dist/layout';
 import {api} from '~/api/api';
 import {connect} from 'react-redux';
 import {UserState} from '@vizir-banking/banking-app-core/dist/redux/user/types';
+import {DetailsData} from '../details/details';
 
 // const list = [
 //   {categoryName: 'Salario', categoryId: 0},
@@ -23,6 +24,8 @@ import {UserState} from '@vizir-banking/banking-app-core/dist/redux/user/types';
 interface CategoryPickerProps {
   setModalStatus: (status: boolean) => void;
   transactionId: string;
+  data: DetailsData | undefined;
+  setData: (data: DetailsData) => void;
 }
 
 type CategoryPickerPropsRedux = ReturnType<typeof mapStateToProps> & CategoryPickerProps;
@@ -35,6 +38,8 @@ interface Category {
 export const CategoryPicker: React.ComponentType<CategoryPickerPropsRedux> = ({
   setModalStatus,
   transactionId,
+  data,
+  setData,
   accountID,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<Category>();
@@ -81,10 +86,25 @@ export const CategoryPicker: React.ComponentType<CategoryPickerPropsRedux> = ({
       })
       .catch((e) => {
         console.log(e);
-      })
+      });
+  };
+
+  const updateCategoryInDetailsList = () => {
+    if (data) {
+      const dataList = data;
+      const dataToUpdateIndex = data.details.findIndex((item) => item.transactionId === transactionId);
+      const dataToUpdate = dataList.details[dataToUpdateIndex];
+      if (selectedCategory) {
+        dataToUpdate.categoryId = selectedCategory.id.toString();
+        dataToUpdate.categoryName = selectedCategory.name;
+        dataList.details[dataToUpdateIndex] = dataToUpdate;
+        setData(dataList);
+      }
+    }
   }
 
   const handleConfirmation = () => {
+    updateCategoryInDetailsList();
     selectedCategory && updateCategory();
     setModalStatus(false);
   }
