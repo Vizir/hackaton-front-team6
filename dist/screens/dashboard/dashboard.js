@@ -56,7 +56,7 @@ const Dashboard = (props) => {
     return (React.createElement(React.Fragment, null,
         React.createElement(View, null,
             React.createElement(MonthSelector, { displayMonth: displayMonth, monthHandler: monthHandler })),
-        loading ? (React.createElement(LoadingScreen, { size: "large", color: "#0000ff" })) : data ? (React.createElement(Container, null,
+        false ? (React.createElement(LoadingScreen, { size: "large", color: "#0000ff" })) : data ? (React.createElement(Container, null,
             React.createElement(Card, null,
                 React.createElement(CardContainer, null,
                     React.createElement(InfoContainer, null,

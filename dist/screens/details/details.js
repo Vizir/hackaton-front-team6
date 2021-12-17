@@ -1,7 +1,8 @@
-import React from 'react';
-import { View } from '@vizir-banking/banking-app-core/dist/layout';
+import React, { useState } from 'react';
 import { MonthSelector } from '../../components/monthSelector/monthSelector';
 import { DetailsItem } from '../../components/DetailsItem/DetailsItem';
+import { CategoryPicker } from '../../screens/categoryPicker/categoryPicker';
+import { Container } from './details.styles';
 const DetailsList = [
     {
         transactionId: '1',
@@ -53,8 +54,9 @@ const DetailsList = [
     },
 ];
 const Details = ({ monthHandler, displayMonth, }) => {
-    return (React.createElement(View, null,
+    const [modalStatus, setModalStatus] = useState(false);
+    return (React.createElement(Container, null, modalStatus ? (React.createElement(CategoryPicker, { setModalStatus: setModalStatus })) : (React.createElement(React.Fragment, null,
         React.createElement(MonthSelector, { displayMonth: displayMonth, monthHandler: monthHandler }),
-        DetailsList.map((item) => (React.createElement(DetailsItem, { key: item.transactionId, categoryId: item.categoryId, categoryName: item.categoryName, establishmentName: item.establishmentName, transactionDate: item.transactionDate, amount: item.amount })))));
+        DetailsList.map((item) => (React.createElement(DetailsItem, { key: item.transactionId, categoryId: item.categoryId, categoryName: item.categoryName, establishmentName: item.establishmentName, transactionDate: item.transactionDate, amount: item.amount, setModalStatus: setModalStatus })))))));
 };
 export { Details };

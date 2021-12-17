@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import moment from 'moment';
+import withNavigation from '@vizir-banking/banking-app-core/dist/navigation/hocs/with-navigation/with-navigation';
 
 import {Touchable} from '@vizir-banking/banking-app-core/dist/layout';
 
@@ -16,12 +17,13 @@ import {DetailsItemIcon} from '../DetailsItemIcon/DetailsItemIcon';
 
 interface DetailsItemProps {
   // transactionId: string,
-  categoryId: string,
-  categoryName: string,
-  establishmentName: string,
-  transactionDate: string,
-  amount: string,
-};
+  categoryId: string;
+  categoryName: string;
+  establishmentName: string;
+  transactionDate: string;
+  amount: string;
+  setModalStatus: (status: boolean) => void;
+}
 
 // transactionId: string
 // categoryId: string,
@@ -35,16 +37,20 @@ export const DetailsItem: React.ComponentType<DetailsItemProps> = ({
   establishmentName,
   transactionDate,
   amount,
+  setModalStatus,
 }) => {
-
   return (
-    <Touchable onPress={() => { }}>
+    <Touchable onPress={() => setModalStatus(true)}>
       <DetailsItemWrapper>
         <DetailsItemIcon categoryName={categoryName} />
         <DetailsItemInfosWrapper>
           <DetailsItemInfos>
-            <DetailsItemTitle categoryName={categoryName}>{establishmentName}</DetailsItemTitle>
-            <DetailsItemDate>{moment(transactionDate).format('DD/MMM - HH:mm:ss')}</DetailsItemDate>
+            <DetailsItemTitle categoryName={categoryName}>
+              {establishmentName}
+            </DetailsItemTitle>
+            <DetailsItemDate>
+              {moment(transactionDate).format('DD/MMM - HH:mm:ss')}
+            </DetailsItemDate>
           </DetailsItemInfos>
         </DetailsItemInfosWrapper>
         <DetailsItemValue>{`R$ ${amount}`}</DetailsItemValue>

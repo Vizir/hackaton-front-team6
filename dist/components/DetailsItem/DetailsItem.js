@@ -3,15 +3,14 @@ import moment from 'moment';
 import { Touchable } from '@vizir-banking/banking-app-core/dist/layout';
 import { DetailsItemWrapper, DetailsItemValue, DetailsItemInfosWrapper, DetailsItemInfos, DetailsItemTitle, DetailsItemDate, } from './DetailsItem.styles';
 import { DetailsItemIcon } from '../DetailsItemIcon/DetailsItemIcon';
-;
 // transactionId: string
 // categoryId: string,
 // categoryName: string,
 // establishmentName: string
 // transactionDate: yyyy-dd-mmThh:mm:ss.sssZ
 // amount: string ("12345.54")
-export const DetailsItem = ({ categoryName, establishmentName, transactionDate, amount, }) => {
-    return (React.createElement(Touchable, { onPress: () => { } },
+export const DetailsItem = ({ categoryName, establishmentName, transactionDate, amount, setModalStatus, }) => {
+    return (React.createElement(Touchable, { onPress: () => setModalStatus(true) },
         React.createElement(DetailsItemWrapper, null,
             React.createElement(DetailsItemIcon, { categoryName: categoryName }),
             React.createElement(DetailsItemInfosWrapper, null,

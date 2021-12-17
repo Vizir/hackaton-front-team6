@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import {View} from '@vizir-banking/banking-app-core/dist/layout';
 import {MonthSelector} from '~/components/monthSelector/monthSelector';
 import {DetailsItem} from '~/components/DetailsItem/DetailsItem';
+import {CategoryPicker} from '~/screens/categoryPicker/categoryPicker';
+
+import {Container} from './details.styles';
 
 interface DetailsProps {
   monthHandler: (month: number) => void;
@@ -63,20 +66,32 @@ const Details: React.ComponentType<DetailsProps> = ({
   monthHandler,
   displayMonth,
 }) => {
+  const [modalStatus, setModalStatus] = useState(false);
+
   return (
-    <View>
-      <MonthSelector displayMonth={displayMonth} monthHandler={monthHandler} />
-      {DetailsList.map((item) => (
-        <DetailsItem
-          key={item.transactionId}
-          categoryId={item.categoryId}
-          categoryName={item.categoryName}
-          establishmentName={item.establishmentName}
-          transactionDate={item.transactionDate}
-          amount={item.amount}
-        />
-      ))}
-    </View>
+    <Container>
+      {modalStatus ? (
+        <CategoryPicker setModalStatus={setModalStatus} />
+      ) : (
+        <>
+          <MonthSelector
+            displayMonth={displayMonth}
+            monthHandler={monthHandler}
+          />
+          {DetailsList.map((item) => (
+            <DetailsItem
+              key={item.transactionId}
+              categoryId={item.categoryId}
+              categoryName={item.categoryName}
+              establishmentName={item.establishmentName}
+              transactionDate={item.transactionDate}
+              amount={item.amount}
+              setModalStatus={setModalStatus}
+            />
+          ))}
+        </>
+      )}
+    </Container>
   );
 };
 

@@ -5,6 +5,7 @@ interface DetailsItemProps {
     establishmentName: string;
     transactionDate: string;
     amount: string;
+    setModalStatus: (status: boolean) => void;
 }
 export declare const DetailsItem: React.ComponentType<DetailsItemProps>;
 export {};
