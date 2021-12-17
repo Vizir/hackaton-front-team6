@@ -22,9 +22,7 @@
     "**/dist": true,
     "**/coverage": true
   },
-  "appService.zipIgnorePattern": [
-    ".vscode{,/**}"
-  ],
+  "appService.zipIgnorePattern": [".vscode{,/**}"],
   "appService.deploySubpath": "",
   "eslint.workingDirectories": [
     {
@@ -35,5 +33,6 @@
   "eslint.nodePath": "./node_modules",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "cSpell.words": ["accountid"]
 }

@@ -21,8 +21,11 @@
     "gen:dist": "docker-compose run lib yarn release && sh updatePlugin.sh"
   },
   "dependencies": {
+    "@react-native-community/art": "^1.2.0",
     "@vizir-banking/design-system": "^2.10.0",
+    "axios": "^0.21.1",
     "moment": "2.24.0",
+    "react-native-pie-chart": "^2.0.2",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "reduxsauce": "^1.1.0",
