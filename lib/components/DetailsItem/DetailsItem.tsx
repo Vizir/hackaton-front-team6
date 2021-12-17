@@ -55,7 +55,7 @@ export const DetailsItem: React.ComponentType<DetailsItemProps> = ({
         <DetailsItemInfosWrapper>
           <DetailsItemInfos>
             <DetailsItemTitle categoryName={categoryName}>
-              {establishmentName}
+              {establishmentName ? establishmentName : `Transação #${transactionId}`}
             </DetailsItemTitle>
             <DetailsItemDate>
               {moment(transactionDate).format('DD/MMM - HH:mm:ss')}

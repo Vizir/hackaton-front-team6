@@ -20,7 +20,7 @@ export const DetailsItem = ({ transactionId, categoryName, establishmentName, tr
             React.createElement(DetailsItemIcon, { categoryName: categoryName }),
             React.createElement(DetailsItemInfosWrapper, null,
                 React.createElement(DetailsItemInfos, null,
-                    React.createElement(DetailsItemTitle, { categoryName: categoryName }, establishmentName),
+                    React.createElement(DetailsItemTitle, { categoryName: categoryName }, establishmentName ? establishmentName : `Transação #${transactionId}`),
                     React.createElement(DetailsItemDate, null, moment(transactionDate).format('DD/MMM - HH:mm:ss')))),
             React.createElement(DetailsItemValue, null, `R$ ${amount}`))));
 };

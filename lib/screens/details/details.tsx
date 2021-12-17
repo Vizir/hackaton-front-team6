@@ -17,7 +17,7 @@ interface DetailsProps {
   loading: boolean;
 }
 
-interface DetailsData {
+export interface DetailsData {
   previousPage: number,
   currentPage: number,
   nextPage: number,
@@ -35,6 +35,7 @@ interface DetailsData {
     amount: string
   }[];
 };
+
 type DetailsItemsList = ReturnType<typeof mapStateToProps> & DetailsProps;
 
 // const DetailsListMock = [
@@ -142,7 +143,12 @@ const Details: React.ComponentType<DetailsItemsList> = ({
   return (
     <Container>
       {modalStatus ? (
-        <CategoryPicker setModalStatus={setModalStatus} transactionId={transactionToUpdate} />
+        <CategoryPicker
+          setModalStatus={setModalStatus}
+          transactionId={transactionToUpdate}
+          data={data}
+          setData={setData}
+        />
       ) : (
         <>
           <View>
