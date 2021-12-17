@@ -10,8 +10,12 @@ import { DetailsItemIcon } from '../DetailsItemIcon/DetailsItemIcon';
 // establishmentName: string
 // transactionDate: yyyy-dd-mmThh:mm:ss.sssZ
 // amount: string ("12345.54")
-export const DetailsItem = ({ categoryName, establishmentName, transactionDate, amount, }) => {
-    return (React.createElement(Touchable, { onPress: () => { } },
+export const DetailsItem = ({ transactionId, categoryName, establishmentName, transactionDate, amount, setModalStatus, setTransactionToUpdate, }) => {
+    const handleItemPress = () => {
+        setTransactionToUpdate(transactionId);
+        setModalStatus(true);
+    };
+    return (React.createElement(Touchable, { onPress: () => handleItemPress() },
         React.createElement(DetailsItemWrapper, null,
             React.createElement(DetailsItemIcon, { categoryName: categoryName }),
             React.createElement(DetailsItemInfosWrapper, null,
