@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {BaseHome} from '~/screens/header/home';
 
 import {SummaryDashboard} from '~/screens/dashboard/dashboard';
-import {Details} from '~/screens/details/details';
+import {DetailsList} from '~/screens/details/details';
 
 const Container = () => {
   const [selectedTabIndex, setSelectedTabIndex] = useState<number>(0);
@@ -25,7 +25,12 @@ const Container = () => {
       );
     else
       return (
-        <Details monthHandler={monthHandler} displayMonth={displayMonth} />
+        <DetailsList
+          monthHandler={monthHandler}
+          displayMonth={displayMonth}
+          setLoading={setLoading}
+          loading={loading}
+        />
       );
   };
 
