@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {ChevronLeft, ChevronRight} from '@vizir-banking/design-system';
 
 import {CustomTouchable, SelectorContainer, MonthName} from './styles';
+
+import {api} from '~/api/api';
 
 const months = [
   'Janeiro',

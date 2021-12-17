@@ -1,7 +1,9 @@
 /// <reference types="react" />
+import { ActivityIndicator } from 'react-native';
 declare type ValueTextProps = {
     color?: string;
 };
+export declare const LoadingScreen: import("styled-components").StyledComponent<typeof ActivityIndicator, any, {}, never>;
 export declare const CardContainer: import("styled-components").StyledComponent<"div", any, {}, never>;
 export declare const CardRow: import("styled-components").StyledComponent<"div", any, {}, never>;
 export declare const InfoContainer: import("styled-components").StyledComponent<typeof import("react-native").View, import("styled-components").DefaultTheme, {}, never>;

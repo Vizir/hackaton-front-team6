@@ -23,6 +23,7 @@
   "dependencies": {
     "@react-native-community/art": "^1.2.0",
     "@vizir-banking/design-system": "^2.10.0",
+    "axios": "^0.21.1",
     "moment": "2.24.0",
     "react-native-pie-chart": "^2.0.2",
     "redux": "^4.0.4",

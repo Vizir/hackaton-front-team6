@@ -1,5 +1,17 @@
 import styled from 'styled-components/native';
+import { ActivityIndicator } from 'react-native';
 import { Text, View } from '@vizir-banking/banking-app-core/dist/layout';
+export const LoadingScreen = styled(ActivityIndicator) `
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: #c6c6c6;
+  opacity: 0.5;
+`;
 export const CardContainer = styled(View) `
   justify-content: center;
   align-items: center;

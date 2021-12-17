@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-
 import {BaseHome} from '~/screens/header/home';
 
-import {Dashboard} from '~/screens/dashboard/dashboard';
+import {SummaryDashboard} from '~/screens/dashboard/dashboard';
 import {Details} from '~/screens/details/details';
 
 const Container = () => {
   const [selectedTabIndex, setSelectedTabIndex] = useState<number>(0);
   const [displayMonth, setDisplayMonth] = useState(new Date().getMonth());
+  const [loading, setLoading] = useState(true);
 
   const handleTabPress = (id: number) => (): void => {
     setSelectedTabIndex(id);
@@ -16,7 +16,12 @@ const Container = () => {
   const renderScreen = (tabIndex: number) => {
     if (tabIndex === 0)
       return (
-        <Dashboard monthHandler={monthHandler} displayMonth={displayMonth} />
+        <SummaryDashboard
+          monthHandler={monthHandler}
+          displayMonth={displayMonth}
+          setLoading={setLoading}
+          loading={loading}
+        />
       );
     else
       return (
