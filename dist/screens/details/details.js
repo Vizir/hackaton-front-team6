@@ -8,7 +8,6 @@ import { Container } from './details.styles';
 import { api } from '../../api/api';
 import { connect } from 'react-redux';
 import { LoadingScreen } from '../dashboard/dashboard.styles';
-;
 // const DetailsListMock = [
 //   {
 //     transactionId: '1',
@@ -81,6 +80,7 @@ const Details = ({ monthHandler, displayMonth, accountID, setLoading, loading, }
             headers: {
                 accountId: accountID && accountID[0],
                 mocked: false,
+                'x-api-key': '7yoWVPD0GD70nkYMxwZCN69QHvcFmV6d3ffCrlU2',
             },
             params: {
                 startDate: period.startDate,

@@ -3,7 +3,6 @@ import { ScrollableContainer, BackButton, Container, ButtonText, CategoryItem, C
 import { Text } from '@vizir-banking/banking-app-core/dist/layout';
 import { api } from '../../api/api';
 import { connect } from 'react-redux';
-;
 export const CategoryPicker = ({ setModalStatus, transactionId, data, setData, accountID, }) => {
     const [selectedCategory, setSelectedCategory] = useState();
     const [categoriesList, setCategoriesList] = useState([]);
@@ -16,8 +15,9 @@ export const CategoryPicker = ({ setModalStatus, transactionId, data, setData, a
         api
             .get('/v1/account/category/list', {
             headers: {
-                mocked: true,
-            }
+                mocked: false,
+                'x-api-key': '7yoWVPD0GD70nkYMxwZCN69QHvcFmV6d3ffCrlU2',
+            },
         })
             .then((response) => {
             setCategoriesList(response.data.categories);
@@ -38,7 +38,7 @@ export const CategoryPicker = ({ setModalStatus, transactionId, data, setData, a
             headers: {
                 accountId: accountID && accountID[0],
                 'Content-Type': 'application/json',
-            }
+            },
         })
             .then((response) => {
             console.log(response.data.message);

@@ -18,23 +18,23 @@ interface DetailsProps {
 }
 
 export interface DetailsData {
-  previousPage: number,
-  currentPage: number,
-  nextPage: number,
-  last: boolean,
-  totalPages: number,
-  totalItems: number,
-  maxItemsPerPage: number,
-  totalItemsPage: number,
+  previousPage: number;
+  currentPage: number;
+  nextPage: number;
+  last: boolean;
+  totalPages: number;
+  totalItems: number;
+  maxItemsPerPage: number;
+  totalItemsPage: number;
   details: {
-    transactionId: string,
-    categoryId: string,
-    categoryName: string,
-    establishmentName: string,
-    transactionDate: string,
-    amount: string
+    transactionId: string;
+    categoryId: string;
+    categoryName: string;
+    establishmentName: string;
+    transactionDate: string;
+    amount: string;
   }[];
-};
+}
 
 type DetailsItemsList = ReturnType<typeof mapStateToProps> & DetailsProps;
 
@@ -123,6 +123,7 @@ const Details: React.ComponentType<DetailsItemsList> = ({
         headers: {
           accountId: accountID && accountID[0],
           mocked: false,
+          'x-api-key': '7yoWVPD0GD70nkYMxwZCN69QHvcFmV6d3ffCrlU2',
         },
         params: {
           startDate: period.startDate,

@@ -32,6 +32,7 @@ const Dashboard = (props) => {
             headers: {
                 accountId: accountID && accountID[0],
                 mocked: false,
+                'x-api-key': '7yoWVPD0GD70nkYMxwZCN69QHvcFmV6d3ffCrlU2',
             },
             params: {
                 startDate: period.startDate,
@@ -50,7 +51,7 @@ const Dashboard = (props) => {
     };
     const getDataSeries = (data) => {
         return data.categories.map((item) => {
-            return item.percentage;
+            return Number(item.percentage);
         });
     };
     return (React.createElement(React.Fragment, null,

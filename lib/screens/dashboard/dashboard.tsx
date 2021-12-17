@@ -77,6 +77,7 @@ const Dashboard: React.ComponentType<DashboardSummary> = (props) => {
         headers: {
           accountId: accountID && accountID[0],
           mocked: false,
+          'x-api-key': '7yoWVPD0GD70nkYMxwZCN69QHvcFmV6d3ffCrlU2',
         },
         params: {
           startDate: period.startDate,
@@ -96,7 +97,7 @@ const Dashboard: React.ComponentType<DashboardSummary> = (props) => {
 
   const getDataSeries = (data: DashboardData) => {
     return data.categories.map((item) => {
-      return item.percentage;
+      return Number(item.percentage);
     });
   };
 

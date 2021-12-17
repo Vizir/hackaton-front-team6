@@ -28,12 +28,13 @@ interface CategoryPickerProps {
   setData: (data: DetailsData) => void;
 }
 
-type CategoryPickerPropsRedux = ReturnType<typeof mapStateToProps> & CategoryPickerProps;
+type CategoryPickerPropsRedux = ReturnType<typeof mapStateToProps> &
+  CategoryPickerProps;
 
 interface Category {
   name: string;
   id: number;
-};
+}
 
 export const CategoryPicker: React.ComponentType<CategoryPickerPropsRedux> = ({
   setModalStatus,
@@ -47,16 +48,17 @@ export const CategoryPicker: React.ComponentType<CategoryPickerPropsRedux> = ({
   const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
-    fetchCategoriesList()
+    fetchCategoriesList();
   }, []);
 
   const fetchCategoriesList = () => {
-    setIsFetching(true)
+    setIsFetching(true);
     api
       .get('/v1/account/category/list', {
         headers: {
-          mocked: true,
-        }
+          mocked: false,
+          'x-api-key': '7yoWVPD0GD70nkYMxwZCN69QHvcFmV6d3ffCrlU2',
+        },
       })
       .then((response) => {
         setCategoriesList(response.data.categories);
@@ -71,16 +73,19 @@ export const CategoryPicker: React.ComponentType<CategoryPickerPropsRedux> = ({
 
   const updateCategory = () => {
     api
-      .put('/v1/account/transaction', {
-        transactionId,
-        categoryId: selectedCategory?.id,
-      },
+      .put(
+        '/v1/account/transaction',
+        {
+          transactionId,
+          categoryId: selectedCategory?.id,
+        },
         {
           headers: {
             accountId: accountID && accountID[0],
             'Content-Type': 'application/json',
-          }
-        })
+          },
+        },
+      )
       .then((response) => {
         console.log(response.data.message);
       })
@@ -92,7 +97,9 @@ export const CategoryPicker: React.ComponentType<CategoryPickerPropsRedux> = ({
   const updateCategoryInDetailsList = () => {
     if (data) {
       const dataList = data;
-      const dataToUpdateIndex = data.details.findIndex((item) => item.transactionId === transactionId);
+      const dataToUpdateIndex = data.details.findIndex(
+        (item) => item.transactionId === transactionId,
+      );
       const dataToUpdate = dataList.details[dataToUpdateIndex];
       if (selectedCategory) {
         dataToUpdate.categoryId = selectedCategory.id.toString();
@@ -101,13 +108,13 @@ export const CategoryPicker: React.ComponentType<CategoryPickerPropsRedux> = ({
         setData(dataList);
       }
     }
-  }
+  };
 
   const handleConfirmation = () => {
     updateCategoryInDetailsList();
     selectedCategory && updateCategory();
     setModalStatus(false);
-  }
+  };
 
   return (
     <ScrollableContainer>
@@ -120,9 +127,7 @@ export const CategoryPicker: React.ComponentType<CategoryPickerPropsRedux> = ({
               key={item.id}
               onPress={() => setSelectedCategory(item)}
             >
-              <CategoryItemText
-                selected={selectedCategory === item}
-              >
+              <CategoryItemText selected={selectedCategory === item}>
                 {item.name}
               </CategoryItemText>
             </CategoryItem>
